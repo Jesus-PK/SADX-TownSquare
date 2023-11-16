@@ -148,12 +148,15 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
+    <ClInclude Include="mod.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="utils.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="config\IniFile.cpp" />
     <ClCompile Include="config\TextConv.cpp" />
     <ClCompile Include="dllmain.cpp" />
+    <ClCompile Include="mod.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -164,6 +167,7 @@
     <ClCompile Include="programming\LandTableInfo.cpp" />
     <ClCompile Include="programming\ModelInfo.cpp" />
     <ClCompile Include="programming\Trampoline.cpp" />
+    <ClCompile Include="utils.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
