@@ -1,8 +1,16 @@
 #include "pch.h"
 #include "o_skybox.h"
-#include "texanims.h"
 
-//	Animated Textures and Level Task:
+//	Animated Textures:
+
+void ANIM_Water()
+{
+	TEXLIST_TownSquare.textures[0].texaddr = TEXLIST_TownSquare_Water.textures[(FrameCounter / 2) % (LengthOfArray(TEX_TownSquare_Water))].texaddr; // Water Animation
+	TEXLIST_TownSquare.textures[1].texaddr = TEXLIST_TownSquare_Fountain.textures[(FrameCounter / 3) % (LengthOfArray(TEX_TownSquare_Fountain))].texaddr; // Fountain Animation
+}
+
+
+//	Level Task:
 
 void RD_TownSquare(task* tp)
 {
@@ -18,7 +26,7 @@ void RD_TownSquare(task* tp)
 		twp->mode++;
 	}
 	
-	TS_ANIM_Water();
+	ANIM_Water();
 }
 
 
@@ -29,10 +37,7 @@ static Trampoline* TS_RunLevelDestructor_t = nullptr;
 void __cdecl RunLevelDestructor_r(int heap)
 {
 	if (heap == 0 && CurrentLevel == LevelIDs_LostWorld)
-	{
 		DragonCount = 0;
-		HasKey = 0;
-	}
 
 	FunctionPointer(void, origin, (int heap), TS_RunLevelDestructor_t->Target());
 	origin(heap);
