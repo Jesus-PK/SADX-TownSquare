@@ -101,7 +101,7 @@ void LOAD_Objects()
 	LOAD_ExitText();
 	LOAD_LifeChest();
 	LOAD_MetalChest();
-	LOAD_Skybox();
+	LOAD_TownSquare_Skybox();
 }
 
 

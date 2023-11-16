@@ -54,7 +54,7 @@ void ExpandDrawQueueMemoryPool()
 
 ModelInfo* LoadBasicModel(const char* name)
 {
-    PrintDebug("[TreeTops] Loading basic model: %s... ", name);
+    PrintDebug("[TownSquare] Loading basic model: %s... ", name);
 
     std::string fullPath = "system\\models\\";
     fullPath = fullPath + name + ".sa1mdl";
@@ -106,7 +106,7 @@ void LoadLandTable(LandTableInfo** info, const char* name, NJS_TEXLIST* texlist)
 
 ModelInfo* LoadChunkModel(const char* name)
 {
-	PrintDebug("[TreeTops] Loading chunk model: %s... ", name);
+	PrintDebug("[TownSquare] Loading chunk model: %s... ", name);
 
 	std::string fullPath = "system\\models\\";
 	fullPath = fullPath + name + ".sa2mdl";
@@ -185,7 +185,7 @@ inline AnimationFile* LoadANM(const char* type, const char* name)
 
 AnimationFile* LoadObjectAnim(const char* name)
 {
-	PrintDebug("[TreeTops] Loading object animation: %s... ", name);
+	PrintDebug("[TownSquare] Loading object animation: %s... ", name);
 	
 	return LoadANM("anims", name);
 }
