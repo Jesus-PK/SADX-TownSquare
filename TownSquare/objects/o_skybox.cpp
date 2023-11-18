@@ -10,9 +10,9 @@ ModelInfo* MDL_TownSquare_Skybox = nullptr;
 void DISPLAY_TownSquare_Skybox(task* tp)
 {
     auto twp = tp->twp;
-    
+
     njSetTexture(&TEXLIST_TownSquare_Objects);
-    
+
     Direct3D_SetNearFarPlanes(SkyboxDrawDistance.Minimum, SkyboxDrawDistance.Maximum);
 
     DisableFog();
@@ -34,9 +34,9 @@ void EXEC_TownSquare_Skybox(task* tp)
     auto twp = tp->twp;
 
     if (!twp->mode)
-    {
-        SetGlobalPoint2Col_Colors(0x15201A, 0x15201A, 0x15201A);
-
+    {  
+        SetGlobalPoint2Col_Colors(0x331544, 0x331544, 0x331544);
+        
         twp->mode++;
     }
 
