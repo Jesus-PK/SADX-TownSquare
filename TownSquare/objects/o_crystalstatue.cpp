@@ -19,7 +19,6 @@ void SetDragonRescued()
 {
     AddEnemyScore(1000);
     dsPlay_oneshot(SE_BOMB, 0, 0, 0);
-    AddNumRing(20);
     DragonCount++;
 }
 
@@ -193,7 +192,7 @@ void EXEC_CrystalStatue(task* tp)
     {
         case 0:
 
-            SetNoRevive(tp); // Enabling this flag makes it so the object won't respawn after is destroyed (if you destroyed the object and you die, the one you collected won't respawn) - Previously known as SetFlagNoRespawn(tp);
+            SetNoRevive(tp);
             
             tp->disp = DISPLAY_CrystalStatue;
             CCL_Init(tp, &COLLI_CrystalStatue, 1, 2u);
@@ -213,9 +212,9 @@ void EXEC_CrystalStatue(task* tp)
                     EnemyBounceAndRumble(hit_tp->twp->counter.b[0]);
                     
                     SetDragonRescued();
-                    Knuckles_KakeraGame_Set_PutEme(twp->ang.z, &twp->pos); // This gives an emerald shard upon destroying the object, the emerald ID is dictated by the Z Angle value.
+                    Knuckles_KakeraGame_Set_PutEme(twp->ang.z, &twp->pos);
                     
-                    Dead(tp); // This sets the "No Respawn" flag on the object, requiring you to manually delete it later. DeadOut on the other hand, sets this same flag alongside destroying the object - In this case, I use Dead since I need to run more code afterwards (the Child Tasks). So I manually delete the object later with FreeTask.
+                    Dead(tp);
                     
                     CreateChildrenTask(CTS_CSDebris, tp);
 
@@ -229,26 +228,22 @@ void EXEC_CrystalStatue(task* tp)
 
         case 2:
 
-            switch (DragonCount) // If DragonCount == 1, 2, 3...
+            switch (DragonCount)
             {
                 case 1:
-                    CreateChildrenTask(CTS_Isaak, tp);
+                    CreateChildrenTask(CTS_Nils, tp);
                     break;
 
                 case 2:
-                    CreateChildrenTask(CTS_Lyle, tp);
+                    CreateChildrenTask(CTS_Devlin, tp);
                     break;
 
                 case 3:
-                    CreateChildrenTask(CTS_Jed, tp);
+                    CreateChildrenTask(CTS_Alvar, tp);
                     break;
 
                 case 4:
-                    CreateChildrenTask(CTS_Bruno, tp);
-                    break;
-
-                case 5:
-                    CreateChildrenTask(CTS_Cleetus, tp);
+                    CreateChildrenTask(CTS_Thor, tp);
                     break;
             }
 
@@ -263,7 +258,7 @@ void EXEC_CrystalStatue(task* tp)
             break;
     }
 
-    Knuckles_KakeraGame_Set_CheckEme(twp->ang.z, &twp->pos); // This checks if the emerald ID exists and let's the radar track it, needs to be called every frame.
+    Knuckles_KakeraGame_Set_CheckEme(twp->ang.z, &twp->pos);
 
     tp->disp(tp);
 }

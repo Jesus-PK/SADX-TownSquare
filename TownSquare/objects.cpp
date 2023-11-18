@@ -20,7 +20,7 @@ NJS_TEXLIST TEXLIST_TownSquare_Water = { arrayptrandlength(TEX_TownSquare_Water)
 NJS_TEXNAME TEX_TownSquare_Fountain[16] = { 0 };
 NJS_TEXLIST TEXLIST_TownSquare_Fountain = { arrayptrandlength(TEX_TownSquare_Fountain) };
 
-NJS_TEXNAME TEX_TownSquare_Objects[6] = { 0 };
+NJS_TEXNAME TEX_TownSquare_Objects[23] = { 0 };
 NJS_TEXLIST TEXLIST_TownSquare_Objects = { arrayptrandlength(TEX_TownSquare_Objects) };
 
 NJS_TEXNAME TEX_TownSquare_Dragons[6] = { 0 };

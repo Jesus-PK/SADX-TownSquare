@@ -38,11 +38,11 @@ void SetSpriteSettings()
 //  Dragon HUD:
 
 static NJS_TEXANIM TEXANIM_DragonIcon[] = {
-    { 0x20, 0x20, 0, 0, 0, 0, 0x100, 0x100, 28, 0x20 }, // ID 0 - TexID 28
-    { 0x20, 0x20, 0, 0, 0, 0, 0x100, 0x100, 29, 0x20 }, // ID 1 - TexID 29
+    { 0x20, 0x20, 0, 0, 0, 0, 0x100, 0x100, 21, 0x20 }, // ID 0 - TexID 28
+    { 0x20, 0x20, 0, 0, 0, 0, 0x100, 0x100, 22, 0x20 }, // ID 1 - TexID 29
 };
 
-static NJS_SPRITE SPRITE_DragonIcon = { { 0.0f, 0.0f, 0.0f }, 1.0f, 1.0f, 0, &TEXLIST_STP_Objects, TEXANIM_DragonIcon };
+static NJS_SPRITE SPRITE_DragonIcon = { { 0.0f, 0.0f, 0.0f }, 1.0f, 1.0f, 0, &TEXLIST_TownSquare_Objects, TEXANIM_DragonIcon };
 
 
 static NJS_TEXANIM TEXANIM_DragonCounter[] = {
@@ -51,8 +51,7 @@ static NJS_TEXANIM TEXANIM_DragonCounter[] = {
     { 0x10, 0x10, 0, 0, 0, 0, 0x100, 0x100, 2, 0x20 }, // ID 2 - TexID 2
     { 0x10, 0x10, 0, 0, 0, 0, 0x100, 0x100, 3, 0x20 }, // ID 3 - TexID 3
     { 0x10, 0x10, 0, 0, 0, 0, 0x100, 0x100, 4, 0x20 }, // ID 4 - TexID 4
-    { 0x10, 0x10, 0, 0, 0, 0, 0x100, 0x100, 5, 0x20 }, // ID 5 - TexID 5
-    { 0x10, 0x10, 0, 0, 0, 0, 0x100, 0x100, 73, 0x20 }, // ID 6 - TexID 73
+    { 0x10, 0x10, 0, 0, 0, 0, 0x100, 0x100, 73, 0x20 }, // ID 5 - TexID 73
 };
 
 static NJS_SPRITE SPRITE_DragonCounter = { { 0.0f, 0.0f, 0.0f }, 1.0f, 1.0f, 0, &CON_REGULAR_TEXLIST, TEXANIM_DragonCounter };
@@ -63,20 +62,20 @@ void DrawDragonCountHUD()
     
     SPRITE_DragonIcon.p.x = 592.0f;
     SPRITE_DragonIcon.p.y = SpriteHeight_Icon;
-    late_DrawSprite2D(&SPRITE_DragonIcon, ArrayID, 22046.496f, NJD_SPRITE_ALPHA, LATE_LIG); // This draws the custom dragon icon.
+    late_DrawSprite2D(&SPRITE_DragonIcon, ArrayID, 22046.496f, NJD_SPRITE_ALPHA, LATE_LIG);
 
-    if (DragonCount >= 5) // This changes the sprite color to green when the condition is met (wrote if equal or greater than the value as a failsafe) - The sprite needs to have the NJD_SPRITE_COLOR flag.
+    if (DragonCount >= 4)
         SetMaterial(1.0f, 0.0f, 1.0f, 0.0f);
     
     SPRITE_DragonCounter.p.x = 576.0f;
-    SPRITE_DragonCounter.p.y = SpriteHeight_Counter; // It's enough calling the height once unless we need a different height for the other sprites.
-    late_DrawSprite2D(&SPRITE_DragonCounter, 5, 22046.496f, NJD_SPRITE_ALPHA, LATE_LIG); // This draws the right number - Static, put manual ID from the array (In this case 5 since the max amount is gonna be 5 dragons).
+    SPRITE_DragonCounter.p.y = SpriteHeight_Counter;
+    late_DrawSprite2D(&SPRITE_DragonCounter, 4, 22046.496f, NJD_SPRITE_ALPHA, LATE_LIG);
     
-    SPRITE_DragonCounter.p.x -= 16.0f; // Doing "-=" makes it so it uses the substracted value from the one that was used previously (SPRITE_DragonCounter.p.x at the very top).
-    late_DrawSprite2D(&SPRITE_DragonCounter, 6, 22046.496f, NJD_SPRITE_ALPHA, LATE_LIG); // This draws the slash character - ID 6 from the array.
+    SPRITE_DragonCounter.p.x -= 16.0f;
+    late_DrawSprite2D(&SPRITE_DragonCounter, 5, 22046.496f, NJD_SPRITE_ALPHA, LATE_LIG);
 
     SPRITE_DragonCounter.p.x -= 16.0f;
-    late_DrawSprite2D(&SPRITE_DragonCounter, DragonCount, 22046.496f, NJD_SPRITE_ALPHA | NJD_SPRITE_COLOR, LATE_LIG); // This draws the left number - It's texID changes depending of the counter.
+    late_DrawSprite2D(&SPRITE_DragonCounter, DragonCount, 22046.496f, NJD_SPRITE_ALPHA | NJD_SPRITE_COLOR, LATE_LIG);
 }
 
 void DrawDragonHUD()
