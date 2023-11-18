@@ -170,7 +170,7 @@ void LoadMissionCardResult_r()
     StageMissionTexlist.textures = TEX_TownSquare_MissionCards;
     StageMissionTexlist.nbTexture = 1;
     
-    LoadPVM("STP_TownSquare-MissionCards", &StageMissionTexlist);
+    LoadPVM("TownSquare_MissionCards", &StageMissionTexlist);
 
     HD_GUI ? HD_GetMissionTypeCheck() : SD_GetMissionTypeCheck();
 

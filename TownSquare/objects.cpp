@@ -81,10 +81,10 @@ TEX_PVMTABLE TEXTURELIST_TownSquare[] = {
 	{ "UNI_A_UNIBODY", (TexList*)0x96CB5C }, // Unidus Black
 	{ "TOGEBALL_TOGEBALL", (TexList*)0x96BC54 }, // Spiked Ball
 	
-	{ "STP_TownSquare-Water", &TEXLIST_TownSquare_Water },
-	{ "STP_TownSquare-Fountain", &TEXLIST_TownSquare_Fountain },
-	{ "STP_Objects", &TEXLIST_TownSquare_Objects },
-	{ "STP_Dragons", &TEXLIST_TownSquare_Dragons },
+	{ "TownSquare_Water", &TEXLIST_TownSquare_Water },
+	{ "TownSquare_Fountain", &TEXLIST_TownSquare_Fountain },
+	{ "TownSquare_Objects", &TEXLIST_TownSquare_Objects },
+	{ "TownSquare_Dragons", &TEXLIST_TownSquare_Dragons },
 	
 	{ 0 }
 };

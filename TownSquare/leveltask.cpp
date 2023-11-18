@@ -1,4 +1,5 @@
 #include "pch.h"
+#include "hud.h"
 #include "o_skybox.h"
 
 //	Animated Textures:
@@ -27,6 +28,9 @@ void RD_TownSquare(task* tp)
 	}
 	
 	ANIM_Water();
+
+	if (CurrentCharacter == Characters_Sonic)
+		DrawDragonHUD();
 }
 
 
