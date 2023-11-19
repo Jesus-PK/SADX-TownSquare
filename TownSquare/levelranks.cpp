@@ -18,7 +18,7 @@ BOOL CheckMissionRequirements_r(int mission, int character, int level)
             switch (character)
             {
                 case Characters_Sonic:
-                    return (time <= 6300 && Rings >= 200) ? 1 : 0; // 1:45 Minutes and 200 Rings
+                    return (time <= 1800) ? 1 : 0; // 30 Seconds
                     break;
 
                 case Characters_Knuckles:
