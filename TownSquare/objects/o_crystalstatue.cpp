@@ -212,6 +212,7 @@ void EXEC_CrystalStatue(task* tp)
                     EnemyBounceAndRumble(hit_tp->twp->counter.b[0]);
                     
                     SetDragonRescued();
+                    updateContinueData(&twp->pos, &twp->ang);
                     Knuckles_KakeraGame_Set_PutEme(twp->ang.z, &twp->pos);
                     
                     Dead(tp);
