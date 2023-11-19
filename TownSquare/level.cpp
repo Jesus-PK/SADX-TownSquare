@@ -49,7 +49,7 @@ void LANDTABLE_TownSquare()
 void DEATHZONES_TownSquare()
 {
 	KillingCollisionModelsListList[LevelIDs_LostWorld][0] = DEATHZONES_TownSquare00;
-	KillingCollisionModelsListList[LevelIDs_LostWorld][1] = DEATHZONES_TownSquare00;
+	KillingCollisionModelsListList[LevelIDs_LostWorld][1] = DEATHZONES_TownSquare01;
 	KillingCollisionModelsListList[LevelIDs_LostWorld][2] = DEATHZONES_TownSquare00;
 }
 
