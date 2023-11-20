@@ -181,6 +181,29 @@ void DISPLAY_CrystalStatue(task* tp)
     njPopMatrix(1u);
 }
 
+void DisplayCheckpointTime_Statue(task* tp)
+{
+    //  This if conditions and timer values are kinda messy, how the game does it is to get that "blinking" effect on the sprites. Basically:
+    //  The int value increases by 1 every frame via twp->wtimer + 1. Once the int value hits the value we specified (180 for example), it'll stop counting up (returns to 0) and will free the task.
+    //  On the else if, it checks if the int value is over 0 and in that case, it'll display the sprites. The other value I'm not 100% sure but basically controls the blink in the sprites, no idea how is dictated nor how to make it a steady blink.
+    //  Now if you don't want the blink effect, you can ditch all that mess in the if then on the else if, simply do a ++twp->wtimer < 120 - That'll make it act the same as my CTS killers (It worked fine on test, but doesn't hurt further testing or scrambling that code around to better do FreeTask).
+    
+    auto twp = tp->twp;
+
+    int TimerDuration = 0;
+
+    CUSTUM_PRINT_NUMBER TimerPosition = { 450.0f, 400.0f, 1.0f, 1.0f, 30.0f, 0.0f };
+
+    TimerPosition.loc_x = 472.0f;
+    TimerPosition.loc_y = (HUD_Plus) ? 41.0f : 35.0f; // OCD go brrrrr
+
+    if (HideHud < 0 || EV_CheckCansel() || (TimerDuration = twp->wtimer + 1, twp->wtimer = TimerDuration, TimerDuration > 0xB4))
+        FreeTask(tp);
+    
+    else if ((TimerDuration & 0x98) != 0)
+        DisplayCheckpointTime(&TimerPosition, twp->ang.x, twp->ang.y);
+}
+
 void EXEC_CrystalStatue(task* tp)
 {
     if (CheckRangeOut(tp))
@@ -217,7 +240,7 @@ void EXEC_CrystalStatue(task* tp)
 
                     GetTime(&TimeMinutes, &TimeSeconds); // Gets current time.
 
-                    task* TASK_DisplayTimer = CreateElementalTask(2u, 6, (void(__cdecl*)(task*))DisplayCheckpointTime_A); // I load this task to store the minutes and seconds in the task data (ang x, ang y).
+                    task* TASK_DisplayTimer = CreateElementalTask(2u, 6, DisplayCheckpointTime_Statue); // I load this task to store the minutes and seconds in the task data (ang x, ang y).
                     
                     if (TASK_DisplayTimer)
                     {
