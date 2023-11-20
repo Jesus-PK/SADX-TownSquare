@@ -48,7 +48,7 @@ BOOL CheckMissionRequirements_r(int mission, int character, int level)
 
 DataPointer(NJS_TEXANIM, MissionSpriteAnim, 0x917784); // Texlist of the Mission Cards.
 
-NJS_TEXNAME TEX_TownSquare_MissionCards[24] = { 0 };
+NJS_TEXNAME TEX_TownSquare_MissionCards[28] = { 0 };
 
 FunctionHook<void> LoadStageMissionImage_t(0x457450);
 FunctionHook<void> LoadMissionCardResult_t(0x457BB0);
@@ -88,7 +88,7 @@ void HD_GetMissionTypeCheck()
             break;
 
         default:               
-            MissionSpriteAnim.texid = (Language != JAPANESE) ? 0 : 6;
+            MissionSpriteAnim.texid = (Language != JAPANESE) ? 24 : 25;
             break;
 	}
 }
@@ -128,7 +128,7 @@ void SD_GetMissionTypeCheck()
             break;
 
         default:               
-            MissionSpriteAnim.texid = (Language != JAPANESE) ? 12 : 18;
+            MissionSpriteAnim.texid = (Language != JAPANESE) ? 26 : 27;
             break;
 	}
 }
