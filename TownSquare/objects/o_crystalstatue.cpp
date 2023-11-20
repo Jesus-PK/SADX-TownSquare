@@ -212,7 +212,19 @@ void EXEC_CrystalStatue(task* tp)
                     EnemyBounceAndRumble(hit_tp->twp->counter.b[0]);
                     
                     SetDragonRescued();
-                    updateContinueData(&twp->pos, &twp->ang);
+                    
+                    updateContinueData(&twp->pos, &twp->ang); // This sets the checkpoint data (pos, ang, time) to the object.
+
+                    GetTime(&TimeMinutes, &TimeSeconds); // Gets current time.
+
+                    task* TASK_DisplayTimer = CreateElementalTask(2u, 6, (void(__cdecl*)(task*))DisplayCheckpointTime_A); // I load this task to store the minutes and seconds in the task data (ang x, ang y).
+                    
+                    if (TASK_DisplayTimer)
+                    {
+                        TASK_DisplayTimer->twp->ang.x = TimeMinutes;
+                        TASK_DisplayTimer->twp->ang.y = TimeSeconds;
+                    }
+
                     Knuckles_KakeraGame_Set_PutEme(twp->ang.z, &twp->pos);
                     
                     Dead(tp);
