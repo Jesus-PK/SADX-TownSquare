@@ -13,16 +13,6 @@ ModelInfo* MDL_CSDebris03 = nullptr;
 CCL_INFO COLLI_CrystalStatue = { 0, CollisionShape_Sphere, 0x77, 0x20, 0x400, { 0.0f, 7.0f, 0.0f }, 11.5f, 0.0f, 0.0f, 0.0f, 0, 0, 0 };
 
 
-//  Crystal Statue - Rewards:
-
-void SetDragonRescued()
-{
-    AddEnemyScore(1000);
-    dsPlay_oneshot(SE_BOMB, 0, 0, 0);
-    DragonCount++;
-}
-
-
 //  Crystal Base - Main:
 
 void DISPLAY_CrystalBase(task* tp)
@@ -157,29 +147,17 @@ childtaskset CTS_CSDebris[] = {
 };
 
 
-//  Crystal Statue - Main:
+//  Crystal Statue - Rewards:
 
-void DISPLAY_CrystalStatue(task* tp)
+void SetDragonRescued()
 {
-    if (MissedFrames)
-        return;
-    
-    auto twp = tp->twp;
-
-    if (twp->mode == 3)
-        return;
-
-    njSetTexture(&TEXLIST_TownSquare_Objects);
-    
-    njPushMatrix(0);
-    
-    njTranslateV(0, &twp->pos);
-    njRotateXYZ(0, twp->ang.x, twp->ang.y, twp->ang.z);
-    
-    dsDrawObject(MDL_CrystalStatue->getmodel());
-    
-    njPopMatrix(1u);
+    AddEnemyScore(1000);
+    dsPlay_oneshot(SE_BOMB, 0, 0, 0);
+    DragonCount++;
 }
+
+
+//  Crystal Statue - Checkpoint:
 
 void DisplayCheckpointTime_Statue(task* tp)
 {
@@ -202,6 +180,46 @@ void DisplayCheckpointTime_Statue(task* tp)
     
     else if ((TimerDuration & 0x98) != 0)
         DisplayCheckpointTime(&TimerPosition, twp->ang.x, twp->ang.y);
+}
+
+void SetCheckpointData(task* tp)
+{
+    auto twp = tp->twp;
+
+    updateContinueData(&twp->pos, &twp->ang); // This sets the checkpoint data (pos, ang, time) to the object.
+
+    task* TASK_DisplayTimer = CreateElementalTask(2u, 6, DisplayCheckpointTime_Statue); // I load this task to store the minutes and seconds in the task data (ang x, ang y).
+
+    if (TASK_DisplayTimer)
+    {
+        TASK_DisplayTimer->twp->ang.x = TimeMinutes;
+        TASK_DisplayTimer->twp->ang.y = TimeSeconds;
+    }
+}
+
+
+//  Crystal Statue - Main:
+
+void DISPLAY_CrystalStatue(task* tp)
+{
+    if (MissedFrames)
+        return;
+    
+    auto twp = tp->twp;
+
+    if (twp->mode == 3)
+        return;
+
+    njSetTexture(&TEXLIST_TownSquare_Objects);
+    
+    njPushMatrix(0);
+    
+    njTranslateV(0, &twp->pos);
+    njRotateXYZ(0, twp->ang.x, twp->ang.y, twp->ang.z);
+    
+    dsDrawObject(MDL_CrystalStatue->getmodel());
+    
+    njPopMatrix(1u);
 }
 
 void EXEC_CrystalStatue(task* tp)
@@ -236,17 +254,8 @@ void EXEC_CrystalStatue(task* tp)
                     
                     SetDragonRescued();
                     
-                    updateContinueData(&twp->pos, &twp->ang); // This sets the checkpoint data (pos, ang, time) to the object.
-
-                    GetTime(&TimeMinutes, &TimeSeconds); // Gets current time.
-
-                    task* TASK_DisplayTimer = CreateElementalTask(2u, 6, DisplayCheckpointTime_Statue); // I load this task to store the minutes and seconds in the task data (ang x, ang y).
-                    
-                    if (TASK_DisplayTimer)
-                    {
-                        TASK_DisplayTimer->twp->ang.x = TimeMinutes;
-                        TASK_DisplayTimer->twp->ang.y = TimeSeconds;
-                    }
+                    if (CurrentCharacter != Characters_Knuckles)
+                        SetCheckpointData(tp);
 
                     Knuckles_KakeraGame_Set_PutEme(twp->ang.z, &twp->pos);
                     
