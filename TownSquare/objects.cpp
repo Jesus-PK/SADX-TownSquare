@@ -94,6 +94,8 @@ TEX_PVMTABLE TEXTURELIST_TownSquare[] = {
 
 void LOAD_Objects()
 {
+	LOAD_TownSquare_Skybox();
+	
 	LOAD_BasicChest();
 	LOAD_CrystalStatue();
 	LOAD_Dragons();
@@ -101,7 +103,6 @@ void LOAD_Objects()
 	LOAD_ExitText();
 	LOAD_LifeChest();
 	LOAD_MetalChest();
-	LOAD_TownSquare_Skybox();
 }
 
 
