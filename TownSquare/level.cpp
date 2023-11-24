@@ -107,18 +107,18 @@ void FILES_TownSquare()
 	ReplaceBIN("CAM0702K", "CAM_TownSquare-K");
 
 	
-	// PL & SL Replacement:
+	// Lantern PL & SL Replacement:
 
-	ReplaceBIN("PL_70B", "PL_TownSquare");
-	ReplaceBIN("PL_71B", "PL_TownSquare");
+	ReplaceBIN("PL_70B", "LANTERN_TownSquare-PL");
+	ReplaceBIN("PL_71B", "LANTERN_TownSquare-PL");
 
-	ReplaceBIN("SL_70B", "SL_TownSquare");
-	ReplaceBIN("SL_71B", "SL_TownSquare");
+	ReplaceBIN("SL_70B", "LANTERN_TownSquare-SL");
+	ReplaceBIN("SL_71B", "LANTERN_TownSquare-SL");
 
 
-	// OST Replacement:
+	// BGM Replacement:
 
-	HelperFunctionsGlobal.ReplaceFile("system\\sounddata\\bgm\\wma\\lstwrld1.wma", "system\\OST_TownSquare.adx");
+	ReplaceBGM("lstwrld1", "BGM_TownSquare");
 }
 
 
