@@ -34,22 +34,6 @@ void RD_TownSquare(task* tp)
 }
 
 
-//	Level Destructor Trampoline:
-
-/*
-static Trampoline* TS_RunLevelDestructor_t = nullptr;
-
-void __cdecl RunLevelDestructor_r(int heap)
-{
-	if (heap == 0 && CurrentLevel == LevelIDs_LostWorld)
-		DragonCount = 0;
-
-	FunctionPointer(void, origin, (int heap), TS_RunLevelDestructor_t->Target());
-	origin(heap);
-}
-*/
-
-
 //	Level Destructor Funchook:
 
 static FunctionHook<void, int>RunLevelDestructor_t(RunLevelDestructor);
