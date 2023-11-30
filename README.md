@@ -1,10 +1,10 @@
-# SADX - Gnorc Cove
+# SADX - Gnorc Cove (v2.1.0)
 
 ![TownSquare_Thumbnail](https://images.gamebanana.com/img/ss/mods/64340dc0ccf8a.jpg)
 
 ## Overview:
 
-This mod brings a fully fledged level port of Town Square from Spyro 1 into SADX, replacing Lost World.
+Part of the [**Spyro Triple Pack**](https://github.com/Jesus-PK/SADX-SpyroTriplePack), this mod brings a fully fledged level port of Town Square from Spyro 1 into SADX, replacing Lost World.
 
 You can find more details about this mod in [**GameBanana**](https://gamebanana.com/mods/414887).
 
