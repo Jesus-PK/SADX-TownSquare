@@ -18,7 +18,6 @@ extern uint8_t DragonCount;
 extern bool HD_GUI;
 extern bool DC_Conversion;
 extern bool HUD_Plus;
-extern bool Lantern_Engine;
 
 extern bool DC_HudTweaks;
 
