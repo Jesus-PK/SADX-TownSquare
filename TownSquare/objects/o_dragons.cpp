@@ -14,11 +14,11 @@ AnimationFile* ANIM_Devlin = nullptr;
 AnimationFile* ANIM_Alvar = nullptr;
 AnimationFile* ANIM_Thor = nullptr;
 
-CCL_INFO COLLI_Spyro = { 0, CollisionShape_Capsule, 0x77, 0, 0, { 0.0f, 6.0f, 0.0f }, 6.0f, 3.0f, 0.0f, 0.0f, 0, 0, 0 };
-CCL_INFO COLLI_Nils = { 0, CollisionShape_Capsule, 0x77, 0, 0, { 0.0f, 15.0f, 0.0f }, 7.5f, 12.5f, 0.0f, 0.0f, 0, 0, 0 };
-CCL_INFO COLLI_Devlin = { 0, CollisionShape_Capsule, 0x77, 0, 0, { 0.0f, 12.5f, 0.0f }, 7.5f, 10.0f, 0.0f, 0.0f, 0, 0, 0 };
-CCL_INFO COLLI_Alvar = { 0, CollisionShape_Capsule, 0x77, 0, 0, { 0.0f, 12.5f, 0.0f }, 7.5f, 10.0f, 0.0f, 0.0f, 0, 0, 0 };
-CCL_INFO COLLI_Thor = { 0, CollisionShape_Capsule, 0x77, 0, 0, { 0.0f, 10.0f, 0.0f }, 7.5f, 15.0f, 0.0f, 0.0f, 0x4000, 0, 0 };
+CCL_INFO COL_Spyro = { 0, CollisionShape_Capsule, 0x77, 0, 0, { 0.0f, 6.0f, 0.0f }, 6.0f, 3.0f, 0.0f, 0.0f, 0, 0, 0 };
+CCL_INFO COL_Nils = { 0, CollisionShape_Capsule, 0x77, 0, 0, { 0.0f, 15.0f, 0.0f }, 7.5f, 12.5f, 0.0f, 0.0f, 0, 0, 0 };
+CCL_INFO COL_Devlin = { 0, CollisionShape_Capsule, 0x77, 0, 0, { 0.0f, 12.5f, 0.0f }, 7.5f, 10.0f, 0.0f, 0.0f, 0, 0, 0 };
+CCL_INFO COL_Alvar = { 0, CollisionShape_Capsule, 0x77, 0, 0, { 0.0f, 12.5f, 0.0f }, 7.5f, 10.0f, 0.0f, 0.0f, 0, 0, 0 };
+CCL_INFO COL_Thor = { 0, CollisionShape_Capsule, 0x77, 0, 0, { 0.0f, 10.0f, 0.0f }, 7.5f, 15.0f, 0.0f, 0.0f, 0x4000, 0, 0 };
 
 
 //  Values:
@@ -73,7 +73,7 @@ void EXEC_Spyro(task* tp)
         case 0:
 
             tp->disp = DISPLAY_Spyro;
-            CCL_Init(tp, &COLLI_Spyro, 1, 4u);
+            CCL_Init(tp, &COL_Spyro, 1, 4u);
 
             twp->mode++;
 
@@ -216,7 +216,7 @@ void EXEC_Nils(task* tp)
             case 0:
 
                 tp->disp = DISPLAY_Nils;
-                CCL_Init(tp, &COLLI_Nils, 1, 4u);
+                CCL_Init(tp, &COL_Nils, 1, 4u);
 
                 POS_NilsSmoke.x = twp->pos.x;
                 POS_NilsSmoke.y = twp->pos.y + 12.0f;
@@ -256,7 +256,7 @@ void EXEC_Devlin(task* tp)
             case 0:
 
                 tp->disp = DISPLAY_Devlin;
-                CCL_Init(tp, &COLLI_Devlin, 1, 4u);
+                CCL_Init(tp, &COL_Devlin, 1, 4u);
 
                 POS_DevlinSmoke.x = twp->pos.x;
                 POS_DevlinSmoke.y = twp->pos.y + 12.0f;
@@ -296,7 +296,7 @@ void EXEC_Alvar(task* tp)
             case 0:
 
                 tp->disp = DISPLAY_Alvar;
-                CCL_Init(tp, &COLLI_Alvar, 1, 4u);
+                CCL_Init(tp, &COL_Alvar, 1, 4u);
 
                 POS_AlvarSmoke.x = twp->pos.x;
                 POS_AlvarSmoke.y = twp->pos.y + 11.0f;
@@ -336,7 +336,7 @@ void EXEC_Thor(task* tp)
             case 0:
 
                 tp->disp = DISPLAY_Thor;
-                CCL_Init(tp, &COLLI_Thor, 1, 4u);
+                CCL_Init(tp, &COL_Thor, 1, 4u);
 
                 POS_ThorSmoke.x = twp->pos.x;
                 POS_ThorSmoke.y = twp->pos.y + 11.0f;
