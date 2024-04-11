@@ -1,4 +1,4 @@
-# SADX - Gnorc Cove (v2.1.0)
+# SADX - Gnorc Cove (v2.2.0)
 
 ![TownSquare_Thumbnail](https://images.gamebanana.com/img/ss/mods/64340dc0ccf8a.jpg)
 
