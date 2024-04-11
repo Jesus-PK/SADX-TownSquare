@@ -1,6 +1,6 @@
 #include "pch.h"
 
-//	Mod Version: v2.1.0
+//	Mod Version: v2.2.0
 
 std::string ModPath;
 HelperFunctions HelperFunctionsGlobal;
